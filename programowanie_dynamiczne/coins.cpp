@@ -4,7 +4,7 @@ using std::cin;
 
 const int ARRAYSIZE = 100;
 
-void print_arr2D(int  arr[][ARRAYSIZE+1], int startx, int endx, int starty, int endy)
+void print_arr2D(int arr[][ARRAYSIZE+1], int startx, int endx, int starty, int endy)
 {
     for(int i = starty; i<=endy; i++)
     {
@@ -15,6 +15,7 @@ void print_arr2D(int  arr[][ARRAYSIZE+1], int startx, int endx, int starty, int 
         cout <<"\n";
     }
 }
+
 
 int main()
 {
