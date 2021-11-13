@@ -42,15 +42,26 @@ int main()
 
     int w = numbers[word2.size()][word1.size()];
     cout <<w <<"\n";
-    int marker = 1;
-    while(w>=0)
+    int marker1 = word1.size(), marker2 = word2.size();
+    char * outcome = new char[w];
+    int it = 0;
+    while(marker1>0 && marker2>0)
     {
-        if(numbers[marker-1][word2.size()+1]!=numbers[marker][word2.size()+1])
+        if(numbers[marker2][marker1]==numbers[marker2-1][marker1])
+            marker2--;
+        else if(numbers[marker2][marker1]==numbers[marker2][marker1-1])
+            marker1--;
+        else
         {
-            cout <<word2[marker-1];
-            w--;
+            outcome[it] = word2[marker2-1];
+            marker2--;
+            marker1--;
+            it++;
         }
-        marker++;
+    }
+    for(int i = w-1; i>=0; i--)
+    {
+        cout <<outcome[i];
     }
     cout <<"\n";
     return 0;
