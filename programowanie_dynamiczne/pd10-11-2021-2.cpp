@@ -38,7 +38,7 @@ int main()
     for(int i = 1; i<=m; i++)
     {
         int maxlen = 0;
-        for(int k = 0; k<i; k++)
+        for(int k = 1; k<i; k++)
         {
             if(arr2[k-1]<arr2[i-1] && lengths[k][n]>maxlen)
             {
