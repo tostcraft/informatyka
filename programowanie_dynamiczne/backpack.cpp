@@ -25,8 +25,8 @@ int main()
     int n, cap;
     int item_mass[ARRAYSIZE] = {0};
     int item_worth[ARRAYSIZE] = {0};
-    int values[ARRAYSIZE+1][ARRAYSIZE+1] = {0};
-    int numbers[ARRAYSIZE+1][ARRAYSIZE+1] = {0};
+    int values[ARRAYSIZE+1][ARRAYSIZE+1] = {0};//tablica wartości
+    int numbers[ARRAYSIZE+1][ARRAYSIZE+1] = {0};//numer przedmiotów
 
     cout <<"backpack capacity: "; cin >>cap;
     cout <<"number of items: ", cin >>n;
