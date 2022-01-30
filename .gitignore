@@ -51,3 +51,4 @@ Thumbs.db
 *.out
 *.txt
 !lekcja-11-01-22+systemy_liczbowe/wyniki/*.txt
+/tests

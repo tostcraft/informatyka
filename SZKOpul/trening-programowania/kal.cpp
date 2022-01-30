@@ -2,9 +2,9 @@
 using std::cout;
 using std::cin;
 
-int binary_search(int arr[], int start, int stop, int n)
+int binary_search(long long int arr[], int start, int stop, long long int n)
 {
-    while(start!=stop)
+    while(start<=stop)
     {
         int pos = (stop-start)/2+start;
         if(arr[pos]==n)return pos;
@@ -25,8 +25,8 @@ int binary_search(int arr[], int start, int stop, int n)
 int main()
 {
     int n, m;
-    int arr_a[1000000] = {0};
-    int arr_b[1000000] = {0};
+    long long int arr_a[1000000] = {0};
+    long long int arr_b[1000000] = {0};
     cin >>n >>m;
     int in, days = 0;
     for(int i = 1; i<=n; i++)
@@ -52,14 +52,14 @@ int main()
         cin >>day >>month >>dir;
         if(dir == 'A')
         {
-            int total_days = arr_a[month-1]+day;
+            long long int total_days = arr_a[month-1]+day;
             int converted_month = binary_search(arr_b, 0, m-1, total_days);
             int converted_day = total_days-arr_b[converted_month];
             cout << converted_day <<" " <<converted_month+1 <<"\n";
         }
         if(dir == 'B')
         {
-            int total_days = arr_b[month-1]+day;
+            long long int total_days = arr_b[month-1]+day;
             int converted_month = binary_search(arr_a, 0, n-1, total_days);
             int converted_day = total_days-arr_a[converted_month];
             cout << converted_day <<" " <<converted_month+1 <<"\n";

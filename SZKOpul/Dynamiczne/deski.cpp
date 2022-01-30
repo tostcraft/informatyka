@@ -5,9 +5,9 @@ using std::cin;
 
 int main()
 {
-    int n, a;
+    long long int n, a;
     cin >>n;
-    int maxfour[4] = {0};
+    long long int maxfour[4] = {0};
     for(int i=0; i<n; i++)
     {
         cin >>a;
@@ -34,6 +34,7 @@ int main()
             maxfour[3]=a;
         }
     }
-    cout <<maxfour[3]*maxfour[3] <<"\n";
+    long long int w = maxfour[3]*maxfour[3];
+    cout <<w <<"\n";
     return 0;
 }

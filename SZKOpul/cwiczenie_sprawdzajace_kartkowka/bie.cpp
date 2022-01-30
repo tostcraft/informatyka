@@ -4,7 +4,7 @@ using std::cin;
 
 int binary_search(std::vector<int> arr, int start, int stop, int n)
 {
-    while(start!=stop)
+    while(start<=stop)
     {
         int pos = (stop-start)/2+start;
         if(arr[pos]==n)return pos;
@@ -44,9 +44,5 @@ int main()
     }
     
     cout <<n-a <<"\n";
-
-    
-
-
     return 0;
 }
