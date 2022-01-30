@@ -2,6 +2,8 @@
 using std::cout;
 using std::cin;
 
+//work in progress
+
 int binary_search(std::vector<int> arr, int start, int stop, int n)
 {
     while(start<=stop)
