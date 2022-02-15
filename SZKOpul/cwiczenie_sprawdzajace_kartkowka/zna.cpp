@@ -34,7 +34,7 @@ int main()
     cout.tie(0);
 
     long int n, m, bajtek, w = 0;
-    long int bitek[100000] = {0};
+    long int bitek[100000];
     cin >> n >>m;
     for(int i = 0; i<n; i++)
     {

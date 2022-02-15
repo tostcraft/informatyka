@@ -2,13 +2,12 @@
 using std::cout;
 using std::cin;
 
-//work in progress
 
-int binary_search(long long int arr[], int start, int stop, long long int n)
+int binary_search(long * arr, int start, int stop, long long int n)
 {
     while(start<=stop)
     {
-        int pos = (stop-start)/2+start;
+        int pos = (stop+start)/2;
         if(arr[pos]==n)return pos;
         if(arr[pos]>n)
         {
@@ -26,11 +25,14 @@ int binary_search(long long int arr[], int start, int stop, long long int n)
 
 int main()
 {
+    std::ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
     int n, m;
-    long long int arr_a[1000000] = {0};
-    long long int arr_b[1000000] = {0};
     cin >>n >>m;
     int in, days = 0;
+    auto arr_a = new long[1000000];
+    auto arr_b = new long[1000000];
     for(int i = 1; i<=n; i++)
     {
         cin >>in;
@@ -54,17 +56,17 @@ int main()
         cin >>day >>month >>dir;
         if(dir == 'A')
         {
-            long long int total_days = arr_a[month-1]+day;
-            int converted_month = binary_search(arr_b, 0, m-1, total_days);
-            int converted_day = total_days-arr_b[converted_month];
-            cout << converted_day <<" " <<converted_month+1 <<"\n";
+            long total_days = arr_a[month-1]+day;
+            int converted_month = binary_search(arr_b, 0, m, total_days);
+            int converted_day = total_days-arr_b[converted_month-1];
+            cout << converted_day <<" " <<converted_month <<"\n";
         }
         if(dir == 'B')
         {
-            long long int total_days = arr_b[month-1]+day;
-            int converted_month = binary_search(arr_a, 0, n-1, total_days);
-            int converted_day = total_days-arr_a[converted_month];
-            cout << converted_day <<" " <<converted_month+1 <<"\n";
+            long total_days = arr_b[month-1]+day;
+            int converted_month = binary_search(arr_a, 0, n, total_days);
+            int converted_day = total_days-arr_a[converted_month-1];
+            cout << converted_day <<" " <<converted_month <<"\n";
         }
     }
     

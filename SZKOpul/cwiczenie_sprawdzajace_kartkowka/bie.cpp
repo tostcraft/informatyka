@@ -2,15 +2,12 @@
 using std::cout;
 using std::cin;
 
-//work in progress
-
-int binary_search(std::vector<int> arr, int start, int stop, int n)
+int binary_search(int * arr, int start, int stop, int n)
 {
     while(start<=stop)
     {
-        int pos = (stop-start)/2+start;
-        if(arr[pos]==n)return pos;
-        if(arr[pos]>n)
+        int pos = (stop+start)/2;
+        if(arr[pos]>=n)
         {
             stop = pos-1;
         }
@@ -25,26 +22,30 @@ int binary_search(std::vector<int> arr, int start, int stop, int n)
 
 int main()
 {
-
-    int n, a;
+    std::ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int n;
     cin >>n;
-    std::vector<int> bierki={};
+    auto bierki = new int[n];
 
     for(int i = 0; i<n; i++)
     {
-        cin >>a;
-        bierki.push_back(a);
+        cin>>bierki[i];
     }
-    std::sort(bierki.begin(), bierki.end());
-    int top1 = bierki[n-1];
-    for(int i = n-2; i>-1; i--)
+    std::sort(bierki, bierki+n);
+
+    int a = 0;
+    for(int i = 0; i<n; i++)
     {
-        int search = top1-bierki[i]+1;
-        a = binary_search(bierki, 0, n-1, search);
-        if(bierki[a]!=search)
-            break;
+        int val = bierki[i]+bierki[i+1];
+        int j = binary_search(bierki, i+2, n, val);
+        if(j>n)j--;
+        if(a<j-i) 
+        {
+            a = j-i;
+        }
     }
-    
-    cout <<n-a <<"\n";
+    cout <<a <<"\n" ;
     return 0;
 }
