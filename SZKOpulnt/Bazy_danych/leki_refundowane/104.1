@@ -1,0 +1,4 @@
+select Recepty.Data, count(Recepty.ID_recepty) as "C" from Recepty
+group by Recepty.Data
+order by -C
+limit 1;

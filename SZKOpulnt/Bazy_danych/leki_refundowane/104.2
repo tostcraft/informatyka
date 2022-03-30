@@ -1,0 +1,6 @@
+select Grupy_lekow.Nazwa_grupy, count(Leki_refundowane.Kod_leku) as "C" from Leki_refundowane
+left join Grupy_lekow on Grupy_lekow.Id_grupy = Leki_refundowane.Id_grupy
+where Leki_refundowane.Cena_refundowana = "0,00"
+group by Grupy_lekow.Nazwa_grupy
+order by -C
+limit 1;
