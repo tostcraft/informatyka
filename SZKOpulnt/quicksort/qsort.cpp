@@ -107,11 +107,6 @@ class QSortArray
 
 
 
-// int * my_qsort(auto arr)
-// {
-
-// }
-
 int main()
 {
     QSortArray qsarr;
