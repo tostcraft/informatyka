@@ -4,8 +4,8 @@
 using std::cout;
 
 int main(){
-    std::array<int, 100000> arr;
-    std::ifstream file("dane1_4.txt");
+    std::array<int, 10> arr;
+    std::ifstream file("dane1_5.txt");
     int a;
     int i = 0;
     while(file>>a){
@@ -17,7 +17,7 @@ int main(){
     int end = 0;
     int sum = 0;
     int l = 0;
-    for(int i = 0; i<100000; i++)
+    for(int i = 0; i<(int)arr.size(); i++)
     {
         sum+=arr[i];
         l++;
@@ -31,18 +31,11 @@ int main(){
             start = i-l+1;
             end = i;
         }
-        // if(arr[i]<0) continue;
-        // int sum = 0;
-        // for(int j = i; j<100000; j++){
-        //     sum+=arr[j];
-        //     if(sum<0)break;
-        //     if(sum>max){
-        //         start = i;
-        //         end = j;
-        //         max = sum;
-        //     }
-        // }
     }
     cout <<max <<" " <<start+1 <<" " <<end+1 <<"\n";
+    for(int i = start; i<=end; i++){
+        cout <<arr[i] <<" ";
+    }
+    cout <<"\n";
     return 0;
 }
