@@ -1,6 +1,5 @@
 #include<iostream>
 #include<array>
-#include<vector>
 
 //work in progress
 
@@ -19,27 +18,27 @@ int main(){
     }
 
     bool found_one = false;
-    int min = 1000000;
-    int marker = 0;
-    for(int i = 0; i<gardensize-inrow; i++){
-        if(garden[i] == 1){
-            int sum = 1;
-            marker = i+1;
-            while(sum<inrow && marker<gardensize){
-                sum+=garden[marker];
-                marker++;
-            }
-            int to_eat = marker-i-inrow;
-            if(to_eat<min){
-                found_one = true;
-                min = to_eat;
-            }
+    int head = -1, tail = 0;
+    int sum = 0;
+    int best = 1000000;
+    while(head < gardensize){
+        if(sum <= inrow){
+            head ++;
+            sum+=garden[head];
+        }
+        else{
+            sum-=garden[tail];
+            tail++;
+        }
+        if(sum == inrow && head-tail-inrow < best){
+            best = head-tail-inrow;
+            if(!found_one) found_one = true;
         }
     }
     if(found_one)
-        cout <<min <<"\n";
+        cout <<best <<"\n";
     else
-        cout <<"NIE\n";
+     cout <<"NIE\n";
     
     
 

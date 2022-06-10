@@ -10,7 +10,7 @@ int main(){
     cin >>start;
     cin >>stop;
     for(int i = 0; SBPRIMES[i]<=stop; i++){
-        if(SBPRIMES[i]>start){
+        if(SBPRIMES[i]>=start){
             c++;
         }
     }
