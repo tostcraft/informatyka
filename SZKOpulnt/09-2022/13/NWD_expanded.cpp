@@ -6,7 +6,7 @@ std::pair<long, long> NWD_exp(long a, long b){
     if(b==0) return std::pair<long, long>(1, 0); //if b is 0 then a is the NWD and we return (1, 0)
     std::pair<long, long> last = NWD_exp(b, a%b); //get the next iteration depth and save it as "last"
     long x = last.second; //let x be the last y
-    long y = last.first - a/b*last.second; //let y be last.x - a div b last.y
+    long y = last.first - a/b*last.second; //let y be last.x - (a div b)  * last.y
     return std::pair<long, long>(x, y); //return a pair (x, y)
 
 }
