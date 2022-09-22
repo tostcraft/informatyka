@@ -24,10 +24,24 @@ void print_arr(int * arr, int n, int s){
 }
 
 void merge(int arr[], int p, int s, int k){
-    int * finalarr = new int[k-p];
-    int marker1 = p, marker2 = s;
+    // cout <<"STARTING MERGE: " <<p <<" " <<s <<" " <<k <<"\n";
+    int * finalarr = new int[k-p+1];
+
+    if(k-p==1){
+        if(arr[k]<arr[p]){
+            int hold = arr[k];
+            arr[k] = arr[p];
+            arr[p] = hold;
+        }
+        // cout <<"2 ELEMENTS: ";
+        // print_arr(arr, 10, 0);
+        return;
+    }
+
+    int marker1 = p, marker2 = s+1;
     int c = 0;
-    while(marker1<s && marker2<k){
+    while(marker1<=s && marker2<=k){
+        // cout <<c <<"\n" <<"marker1: " <<marker1 <<" " <<arr[marker1] <<"\nmarker2: " <<marker2 <<" " <<arr[marker2] <<"\n";
         if(arr[marker1]<=arr[marker2]){
             finalarr[c] = arr[marker1];
             c++;
@@ -38,32 +52,37 @@ void merge(int arr[], int p, int s, int k){
             c++;
             marker2++;
         }
+        // print_arr(finalarr, k-p, 0);
     }
-    for(int i = marker1; i<s; i++){
+    for(int i = marker1; i<=s; i++){
         finalarr[c] = arr[i];
         c++;
     }
-    for(int i = marker2; i<k; i++){
+    for(int i = marker2; i<=k; i++){
         finalarr[c] = arr[i];
         c++;
     }
-    
-    for(int i = p; i<k; i++){
-        arr[i] = finalarr[i-p];
+    // cout <<"FINAL ";
+    // print_arr(finalarr, k-p, 0);
+    for(int i = 0; i<k-p+1; i++){
+        arr[p+i] = finalarr[i];
     }
-    print_arr(arr, k-p, p);
+    // cout <<"HERE ";
+    // print_arr(arr, 10, 0);
 
 }
 
 void mergesort(int arr[], int p, int k){
-    if(p>=k) return;
-    
-    int s = (p+k)/2;
-    mergesort(arr, p, s);
-    mergesort(arr, s+1, k);
-    
-    merge(arr, p, s, k);
-    print_arr(arr, k-p, p);
+    // cout <<"entering mergesort"<<p <<" "<<k <<"\n";
+    if(p<k){
+        int s = (k+p)/2;
+        mergesort(arr, p, s);
+        mergesort(arr, s+1, k);
+        merge(arr, p, s, k);
+    }
+    else{
+        // cout <<"EXITING" <<" " << p <<" " <<arr[p] <<"\n";
+    }
 
 }
 
