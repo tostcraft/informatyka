@@ -4,7 +4,7 @@ using std::cin;
 using std::cout;
 
 long long nwd(long long a, long long b){
-    int side;
+    long long side;
     while(b>0){
         // cout <<a <<" " <<b <<"\n";
         side = a;
